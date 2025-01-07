@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 
@@ -27,3 +28,5 @@ Route::post('/loginUser', [StudentController::class, 'login']);
 
 
 Route::get('/home', [BookController::class,'showBooks']);
+
+Route::get('/purchase/{student_id}/{book_id}/',[TransactionController::class,'buy']);

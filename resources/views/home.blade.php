@@ -60,6 +60,11 @@
                  <td>{{$book->book_id}}</td>
                  <td>{{$book->book_name}}</td>
                  <td>{{$book->author}}</td>
+                 <td>
+                  <a href="{{ url('/purchase/' . session()->get('student_id') . '/' . $book->book_id) }}" class="btn btn-success">Purchase</a>
+                 
+
+                 </td>
                 </tr>
                 @endforeach
                </tbody>
