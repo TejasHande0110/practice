@@ -1,0 +1,39 @@
+[
+    {
+        "book_name" : "Abbot",
+        "author" : "Walter Scott"
+        
+    },
+   {
+       "book_name" : "Pride and Prejudice",
+        "author" : "Jane Austen"
+        
+
+   },
+   {
+       "book_name" : "Hamlet",
+        "author" : "Willam Shakespeare"
+        
+   },
+   {
+       "book_name" : "A Bend in the River",
+        "author" : "V S Naipaul"
+   },
+   {
+        
+        "book_name" : "The Stranger",
+        "author" : "Albert Camus"
+   },
+   {
+        
+    "book_name" : "The Odyssey",
+    "author" : "Homer"
+   },
+   {
+        
+    "book_name" : "The Trial",
+    "author" : "Franz Kafka"
+   }
+
+
+]
