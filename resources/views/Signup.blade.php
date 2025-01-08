@@ -39,25 +39,57 @@
               @csrf
               @method('POST')
               <div class="mb-3 mt-3">
-                <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter your full name" name="name" required>
+                <label  for="name">Name:</label>
+                <input type="text" class="form-control @error ('name') is-invalid @enderror" id="name" placeholder="Enter your full name" name="name" value={{old('name')}}>
+                
               </div>
+              <span>@error('name')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror</span>
+
               <div class="mb-3 mt-3">
                 <label for="department">Department:</label>
-                <input type="text" class="form-control" id="department" placeholder="Enter department" name="department" required>
+                <input type="text" class="form-control @error ('department') is-invalid @enderror" id="department" placeholder="Enter department" name="department" value={{old('department')}}>
               </div>
+              <span>
+                  @error('department')
+                  <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror
+              </span>
+
+
               <div class="mb-3 mt-3">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+                <input type="text" class="form-control @error ('email') is-invalid @enderror" id="email" placeholder="Enter email" name="email" value={{old('email')}}>
+               
               </div>
-              <div class="mb-3 mt-3">
+              <span>
+                  @error('email')
+                  <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror
+              </span>
+
+
+            <div class="mb-3 mt-3">
                 <label for="pno">Phone Number:</label>
-                <input type="text" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" name="pno" required>
-              </div>
+                <input type="text" class="form-control @error ('pno') is-invalid @enderror" id="phoneNumber" placeholder="Enter Phone Number" name="pno" value={{old('pno')}} >
+            </div>
+            <span>
+                @error('pno')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </span>
+
+
               <div class="mb-3">
                 <label for="pwd">Password:</label>
-                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pass" required>
+                <input type="password" class="form-control @error ('pass') is-invalid @enderror" id="pwd" placeholder="Enter password" name="pass" value={{old('pass')}} >
               </div>
+              <span>
+                @error('pass')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </span>
               
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>

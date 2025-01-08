@@ -27,6 +27,18 @@ Route::get('/login', function(){
 Route::post('/loginUser', [StudentController::class, 'login']);
 
 
-Route::get('/home', [BookController::class,'showBooks']);
+Route::get('/home', function(){
+    return view('home');
+});
 
-Route::get('/purchase/{student_id}/{book_id}/',[TransactionController::class,'buy']);
+Route::get('/history',[TransactionController::class,'history']);
+
+Route::get('/purchase/{user_id}/{book_id}/',[TransactionController::class,'buy']);
+
+Route::get('/purchase', [BookController::class,'showBooks']);
+
+Route::post('/bookadd', [BookController::class,'addBooks']);
+
+Route::get('/addBook', function(){
+    return view('addBook');
+});

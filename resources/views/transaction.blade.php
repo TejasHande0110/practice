@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Home</title>
+        <title>Recent Purchase</title>
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -25,7 +25,7 @@
             <div class="container-flex" style=" justify-items:right">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link active" href="/home">Books</a>
+                  <a class="nav-link " href="/home">Books</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link active" href="/purchase">Purchase</a>
@@ -42,6 +42,32 @@
             </div>
           </nav>
           
+          <div class="container d-flex align-items-center">
+
+           
+          
+            <h1 class="mb-10 mt-10">Purchase Book Details</h1>
+            <table class="table table-bordered">
+               <thead>
+                <th>ID</th>
+                <th>Student Name</th>
+                <th>Book Name</th>
+                <th>Date</th>
+                
+                
+               </thead>
+               <tbody>
+                @foreach ($transactions as $transaction)
+                <tr>
+                 <td>{{$transaction->transaction_id}}</td>
+                 <td>{{$transaction->name}}</td>
+                 <td>{{$transaction->book_name}}</td>
+                 <td>{{$transaction->created_at}}</td>
+                </tr>
+                @endforeach
+               </tbody>
     
+            </table>
+        </div>
     </body>
 </html>

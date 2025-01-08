@@ -9,6 +9,17 @@ class StudentController extends Controller
 {
     //
     public function add(Request $request){
+
+           $validated = $request->validate([
+                 'name' => 'required | max:20 ',
+                 'email' =>  'required | email  ',
+                 'pno' => 'required | numeric | size:10',
+                 'department' => 'required | max:30',
+                 'pass' => 'required | string | min:6',
+           ]);
+           
+          
+
            $student = new Student;
            $student->name = $request->input('name');
            $student->email = $request->input('email');
@@ -17,7 +28,7 @@ class StudentController extends Controller
            $student->pass = $request->input('pass');
            $student->save();
 
-           redirect('/login');
+           return redirect('/login');
     }
 
     public function login(Request $request){  
@@ -31,9 +42,9 @@ class StudentController extends Controller
              ->where('pass', $pass)
              ->first();
              
+             session(['user_id' => $student_id['student_id']]);
              
-             
-             return redirect('/home')->with( ['student_id' => $student_id] );
+             return redirect('/home');
              
 
              

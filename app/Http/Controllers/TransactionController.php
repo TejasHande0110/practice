@@ -14,9 +14,7 @@ class TransactionController extends Controller
         
  
 
-        $student_id_json = $student_id;
-        $student_id_array = json_decode($student_id_json, true);
-        $student_id = $student_id_array['student_id'];
+       
         
 
         $student = Student::select('name')
@@ -41,6 +39,15 @@ class TransactionController extends Controller
 
         $transaction->save();
 
-        return $transaction;
+       
+        return view('transaction', ['transactions' => Transaction::get()]);
     }
+     
+    public function history(){
+        $transaction = Transaction::all()
+                       ->where('student_id', session('user_id'));
+                       
+        return view('transaction', ['transactions' => $transaction]);
+    }
+
 }

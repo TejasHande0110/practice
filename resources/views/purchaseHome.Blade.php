@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Home</title>
+        <title>Store</title>
 
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -43,5 +43,31 @@
           </nav>
           
     
+    
+      
+    
+        </div>
+        <div class="container">
+          <div class="row">
+            @foreach($books as $book)
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4" style="align-items: center">
+              <div class="card" style="width: 18rem; height: 390px">
+                <img src="." class="card-img-top" alt="image">
+                <div class="card-body">
+                  <h5 class="card-title" style="text-align: center; font-family: Lucida Handwriting">{{$book->book_name}}</h5>
+                  <label>Written by - {{$book->author}}</label>
+                  <p class="card-text">{{$book->description}}</p>
+                  <a href="{{ url('/purchase/' . session('user_id'). '/' . $book->book_id) }}" class="btn btn-success" style="align-content: center">Purchase</a>
+                </div>
+              </div>
+            </div>
+            @endforeach
+          </div>
+        </div>
+        
     </body>
 </html>
+
+  
+
+
