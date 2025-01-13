@@ -42,3 +42,6 @@ Route::post('/bookadd', [BookController::class,'addBooks']);
 Route::get('/addBook', function(){
     return view('addBook');
 });
+
+
+Route::get('/Searchbooks', [BookController::class, 'index'])->name('books.index');

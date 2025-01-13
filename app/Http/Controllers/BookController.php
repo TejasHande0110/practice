@@ -16,6 +16,21 @@ class BookController extends Controller
 
     }
 
+    public function index(Request $request)
+    {
+        $query = $request->input('query');
+
+        if ($query) {
+            // Filter books where the name starts with the query
+            $books = Book::where('book_name', 'like', $query . '%')->get();
+        } else {
+            // Return all books if no query
+            $books = Book::all();
+        }
+
+        return view('purchaseHome', compact('books'));
+    }
+
     public function addBooks(Request $request){
             $validated = $request->validate([
                 'book_name' => 'required | max:30 | string',

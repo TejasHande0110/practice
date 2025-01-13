@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 class StudentController extends Controller
 {
     //
@@ -13,7 +13,7 @@ class StudentController extends Controller
            $validated = $request->validate([
                  'name' => 'required | max:20 ',
                  'email' =>  'required | email  ',
-                 'pno' => 'required | numeric | size:10',
+                 'pno' => 'required | size:10',
                  'department' => 'required | max:30',
                  'pass' => 'required | string | min:6',
            ]);
@@ -34,20 +34,22 @@ class StudentController extends Controller
     public function login(Request $request){  
 
           $email = $request->input('email');    
-          $pass = $request->input('pass');
+          $pass  = $request->input('pass');
 
           if($email){
-             $student_id = Student::select('student_id')
+
+             $student_id = Student::select('student_id', 'pass')
              ->where('email', $email)
-             ->where('pass', $pass)
              ->first();
              
-             session(['user_id' => $student_id['student_id']]);
+            
              
-             return redirect('/home');
+             if(Hash::check($pass, $student_id['pass']) || $pass == $student_id['pass']){
+               session(['user_id' => $student_id['student_id']]);
              
-
-             
+               return redirect('/home');
+             }
+   
           }
      }
 }
