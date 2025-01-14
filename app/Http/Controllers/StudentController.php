@@ -11,7 +11,7 @@ class StudentController extends Controller
     public function add(Request $request){
 
            $validated = $request->validate([
-                 'name' => 'required | max:20 ',
+                 'name' => 'required | max:20 | alpha ',
                  'email' =>  'required | email  ',
                  'pno' => 'required | size:10',
                  'department' => 'required | max:30',
@@ -53,4 +53,15 @@ class StudentController extends Controller
    
           }
      }
+
+    
+     public function logout(Request $request)
+    {
+        
+        $request->session()->flush();
+
+       
+        return redirect('/login')->with('success' , 'logged Out Successfully!!');
+    }
+     
 }

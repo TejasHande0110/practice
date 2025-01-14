@@ -3,29 +3,30 @@
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', function () {
-    return view('home');
-});
 
+
+
+//Student Route
 
 Route::post('/register', [StudentController::class, 'add']);
-
 Route::get('/SignUp' , function(){
     return view('SignUp');
-});
+})->name('SignUp');
 
 Route::get('/login', function(){
     return view('login');
-});
+})->name('login');
 
 Route::post('/loginUser', [StudentController::class, 'login']);
 
+Route::get('/logout', [StudentController::class, 'logout']);
 
 Route::get('/home', function(){
     return view('home');
@@ -37,11 +38,20 @@ Route::get('/purchase/{user_id}/{book_id}/',[TransactionController::class,'buy']
 
 Route::get('/purchase', [BookController::class,'showBooks']);
 
-Route::post('/bookadd', [BookController::class,'addBooks']);
+Route::get('/Searchbooks', [BookController::class, 'index'])->name('books.index');
 
+//Admin Routes
+
+Route::post('/loginAdmin', [AdminController::class, 'login']);
+Route::get('/admin_dash', function(){
+    return view('addBook');
+});
 Route::get('/addBook', function(){
     return view('addBook');
 });
+Route::post('/bookadd', [BookController::class,'addBooks']);
 
-
-Route::get('/Searchbooks', [BookController::class, 'index'])->name('books.index');
+Route::get('/allbuys', [AdminController::class,'showAll']);
+Route::get('/showAll', function(){
+    return view('ShowTransaction');
+});
