@@ -38,7 +38,7 @@ class StudentController extends Controller
 
           if($email){
 
-             $student_id = Student::select('student_id', 'pass')
+             $student_id = Student::select('student_id', 'pass', 'name')
              ->where('email', $email)
              ->first();
              
@@ -46,6 +46,7 @@ class StudentController extends Controller
              
              if(Hash::check($pass, $student_id['pass']) || $pass == $student_id['pass']){
                session(['user_id' => $student_id['student_id']]);
+               session(['user_name' => $student_id['name']]);
              
                return redirect('/home');
              }

@@ -15,7 +15,7 @@ class Maxlength implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         //
-        if(strlen($value) > 500){
+        if(strlen($value) > 1000){
             $fail("Description should be less than 100 characters");
         }
     }
