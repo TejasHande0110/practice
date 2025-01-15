@@ -3,12 +3,14 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
-class Student extends Model implements Authenticatable
+use Illuminate\foundation\Auth\User as Authenticatable;
+
+class Student extends Authenticatable
 {
     //
-    use HasFactory, AuthenticatableTrait;
+    use HasFactory;
+
+    protected $primaryKey = 'student_id';
     public function scopeActive($query, $student_id){
          return $query->where('student_id', $student_id);
     }

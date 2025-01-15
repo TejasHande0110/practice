@@ -14,7 +14,8 @@
                     <th>ID</th>
                     <th>Student Name</th>
                     <th>Book Name</th>
-                    <th>Date</th>
+                    <th>Purchase Date</th>
+                    <th>Return Date</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +25,7 @@
                     <td>{{ $transaction->name }}</td>
                     <td>{{ $transaction->book_name }}</td>
                     <td>{{ \Carbon\Carbon::parse($transaction->created_at)->format('d M Y') }}</td>
+                    <td>{{$transaction->renew}}</td>
 
                 </tr>
                 @endforeach

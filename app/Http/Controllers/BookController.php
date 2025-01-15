@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Rules\Maxlength;
@@ -10,18 +10,20 @@ class BookController extends Controller
 {
     //
     public function showBooks(){
-        $books = Book::all();
-        Debugbar::info($books);
-        return view('purchaseHome', ['books' => $books]);
-
+        if(Auth::check()){
+            $books = Book::all();
+            Debugbar::info($books);
+            return view('purchaseHome', ['books' => $books]);
+        }else{
+            return redirect('/login');
+        }
     }
 
     public function index(Request $request)
     {
         $query = $request->input('query');
 
-        if ($query) {
-            
+        if ($query) {           
             $books = Book::where('book_name', 'like', $query . '%')->get();
             if(!$books){
                 DebugBar::error('No Book Exist');

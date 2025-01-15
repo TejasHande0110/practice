@@ -49,7 +49,7 @@
                         <a class="nav-link" href="/renew">Renew</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/logout" id="logout-link">Logout</a>
+                        <a class="nav-link" href="/adminlogout" id="logout-link">Logout</a>
                     </li>
                 </ul>
             </div>

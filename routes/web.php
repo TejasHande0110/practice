@@ -14,7 +14,6 @@ Route::get('/', function () {
 
 
 //Student Route
-
 Route::post('/register', [StudentController::class, 'add']);
 Route::get('/SignUp' , function(){
     return view('SignUp');
@@ -24,28 +23,25 @@ Route::get('/login', function(){
     return view('login');
 })->name('login');
 
-Route::post('/loginUser', [StudentController::class, 'login']);
+
 
 Route::get('/logout', [StudentController::class, 'logout']);
-
-Route::get('/home', function(){
-    return view('home');
-});
-
+Route::post('/loginUser', [StudentController::class, 'login']);
+Route::get('/home', [StudentController::class, 'home'])->name('home');
 Route::get('/history',[TransactionController::class,'history']);
-
 Route::get('/purchase/{user_id}/{book_id}/',[TransactionController::class,'buy']);
-
 Route::get('/purchase', [BookController::class,'showBooks']);
-
 Route::get('/Searchbooks', [BookController::class, 'index'])->name('books.index');
 
-//Admin Routes
+Route::get('/request/{transaction_id}', [TransactionController::class,'sendRequest']);
 
+
+
+
+
+//Admin Routes
 Route::post('/loginAdmin', [AdminController::class, 'login']);
-Route::get('/admin_dash', function(){
-    return view('addBook');
-});
+Route::get('/admin_dash', [AdminController::class,'dash']);
 Route::get('/addBook', function(){
     return view('addBook');
 });
@@ -55,3 +51,7 @@ Route::get('/allbuys', [AdminController::class,'showAll']);
 Route::get('/showAll', function(){
     return view('ShowTransaction');
 });
+
+Route::get('/adminlogout', [AdminController::class,'logout']);
+
+Route::get('/renew',[TransactionController::class, 'getRenew']);
