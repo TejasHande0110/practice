@@ -1,3 +1,7 @@
+@php
+
+use Illuminate\Support\Facades\Auth;
+@endphp
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -20,6 +24,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/renew">Renew</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/returnBook">Return</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout" id="logout-link">Logout</a>

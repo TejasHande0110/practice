@@ -65,7 +65,7 @@ class StudentController extends Controller
       if(Auth::check()){
         return view('home');
       }else{
-        return redirect('/login');
+        return redirect('/login')->with('failure', 'Log in First!!!');
       }
     }
      

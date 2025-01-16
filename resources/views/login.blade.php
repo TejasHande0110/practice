@@ -44,6 +44,31 @@
                 toggleButton.textContent = 'Switch to User Login';
             }
         }
+
+        function showModal(message, type) {
+            const modalBody = document.getElementById('modalBody');
+            const modal = new bootstrap.Modal(document.getElementById('messageModal'));
+            modalBody.textContent = message;
+
+            if (type === 'success') {
+                modalBody.classList.remove('text-danger');
+                modalBody.classList.add('text-success');
+            } else {
+                modalBody.classList.remove('text-success');
+                modalBody.classList.add('text-danger');
+            }
+
+            modal.show();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            @if(session('success'))
+                showModal('{{ session('success') }}', 'success');
+            @endif
+            @if(session('failure'))
+                showModal('{{ session('failure') }}', 'failure');
+            @endif
+        });
     </script>
 </head>
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
@@ -64,12 +89,7 @@
             </ul>
         </div>
     </nav>
-    @if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    @endif
+
     <div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
         <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
             <h2 class="text-center mb-3">Log in</h2>
@@ -112,6 +132,25 @@
             </div>
         </div>
     </div>
+
+    <!-- Bootstrap Modal -->
+   <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title active" id="messageModalLabel">WARNING</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Message content will be dynamically inserted here by JavaScript -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html>

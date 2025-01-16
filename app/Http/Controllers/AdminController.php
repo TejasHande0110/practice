@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Transaction;
+use Carbon\Carbon;
 class AdminController extends Controller
 {
     //
@@ -37,4 +38,79 @@ class AdminController extends Controller
             return redirect('/login');
         }
     }
+
+    public function getRequest(){
+        if(session('admin')){
+        $pendingRequests = Transaction::where('status', 'pending')->get();
+        return view('pending', ['requests' => $pendingRequests]);
+    }else{
+        return redirect('/login');
+    }
+    }
+
+    public function approveRequest(Request $request, $transaction_id){
+        if(session('admin')){
+
+            $date = Carbon::now();
+            $date = $date->addDays(7)->format('Y-m-d');
+            $pendingRequests = Transaction::where('transaction_id', $transaction_id)
+                                  ->update([
+                                    'status' => "active",
+                                    'renew' => $date
+                                  ]);
+                                  
+                            
+            
+            return redirect('returnRequest');
+        }else{
+            return redirect('/login');
+        }
+    }
+
+
+    public function rejectRequest(Request $request, $transaction_id){
+        if(session('admin')){
+        $pendingRequests = Transaction::where('transaction_id', $transaction_id)
+                          ->update(['status' => "rejected"]);
+        return redirect('returnRequest');
+        }else{
+        return redirect('/login');
+        }
+    }
+
+    public function loadReturnHome(){
+        if(session('admin')){
+            $returnRequest = Transaction::where('status', 'return')->get();
+            return view('adminReturnHome', ['requests' => $returnRequest]);
+        }else{
+            return redirect('/login');
+        }
+    }
+
+    public function rejectReturn(Request $request, $transaction_id){
+        if(session('admin')){
+        $pendingRequests = Transaction::where('transaction_id', $transaction_id)
+                          ->update(['status' => "rejected"]);
+        return redirect('/renewRequests');
+        }else{
+        return redirect('/login');
+        }
+    }
+
+    public function approveReturn($transaction_id){
+        if(session('admin')){
+
+            
+            $pendingRequests = Transaction::where('transaction_id', $transaction_id)
+                                  ->update([
+                                    'status' => "received",
+                                  ]);
+                                  
+
+            return redirect('/adminReturnHome');
+        }else{
+            return redirect('/login');
+        }
+    }
+
 }

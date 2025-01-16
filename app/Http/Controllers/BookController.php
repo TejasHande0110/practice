@@ -15,7 +15,7 @@ class BookController extends Controller
             Debugbar::info($books);
             return view('purchaseHome', ['books' => $books]);
         }else{
-            return redirect('/login');
+            return redirect('/login')->with('failure', 'Log in First!!!');
         }
     }
 

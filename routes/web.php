@@ -34,8 +34,8 @@ Route::get('/purchase', [BookController::class,'showBooks']);
 Route::get('/Searchbooks', [BookController::class, 'index'])->name('books.index');
 
 Route::get('/request/{transaction_id}', [TransactionController::class,'sendRequest']);
-
-
+Route::get('/returnBook', [TransactionController::class,'getReturnBook'])->middleware('auth');
+Route::get('/return/{transaction_id}',[TransactionController::class, 'sendReturnReq']);
 
 
 
@@ -55,3 +55,11 @@ Route::get('/showAll', function(){
 Route::get('/adminlogout', [AdminController::class,'logout']);
 
 Route::get('/renew',[TransactionController::class, 'getRenew']);
+Route::get('/renewRequests', [AdminController::class,'getRequest']);
+
+Route::get('/returnRequest',[AdminController::class, 'loadReturnHome']);
+Route::post('/approveRequest/{transaction_id}', [AdminController::class, 'approveRequest'])->name('approveRequest');
+Route::post('/rejectRequest/{transaction_id}', [AdminController::class, 'rejectRequest'])->name('rejectRequest');
+
+Route::post('/approveReturn/{transaction_id}', [AdminController::class, 'approveReturn'])->name('approveReturn');
+Route::post('/rejectReturn/{transaction_id}', [AdminController::class, 'rejectReturn'])->name('rejectReturn');

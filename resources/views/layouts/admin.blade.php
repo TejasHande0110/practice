@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title ?? 'Your App' }}</title>
+    <title>{{ $title ?? 'Admin' }}</title>
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet">
@@ -46,7 +46,10 @@
                         <a class="nav-link" href="/allbuys">History</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/renew">Renew</a>
+                        <a class="nav-link" href="/renewRequests">Renew</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/returnRequest">Return</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/adminlogout" id="logout-link">Logout</a>

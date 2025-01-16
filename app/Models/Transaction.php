@@ -8,6 +8,10 @@ use Illuminate\Support\Carbon;
 class Transaction extends Model
 {
     //
+    protected $primaryKey = 'transaction_id';
+    protected $fillable = [
+        'status',
+    ]  ;
     public function getCreatedAtAttribute($date) {
         return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d M Y');
     }

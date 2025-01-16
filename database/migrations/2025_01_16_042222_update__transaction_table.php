@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('transactions', function (Blueprint $table) {
             //
-            $table->string('email');
+            $table->enum('status', ['active', 'pending', 'rejected', 'return', 'received'])->default('active')->nullable(false);
         });
     }
 
@@ -24,6 +24,7 @@ return new class extends Migration
     {
         Schema::table('transactions', function (Blueprint $table) {
             //
+
         });
     }
 };
