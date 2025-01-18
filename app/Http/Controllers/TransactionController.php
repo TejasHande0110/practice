@@ -33,7 +33,7 @@ class TransactionController extends Controller
         
 
 
-        $book = Book::select('book_name')
+        $book = Book::select('book_name', 'image')
                 ->where('book_id', $book_id)
                 ->first();
 
@@ -46,6 +46,7 @@ class TransactionController extends Controller
         $transaction->book_id = $book_id;
         $transaction->email = $student['email'];
         $transaction->book_name = $book['book_name'];
+        $transaction->book_image = $book['image'];
         $transaction->renew = $date->addDays(7)->format('Y-m-d'); 
     
         $transaction->save();

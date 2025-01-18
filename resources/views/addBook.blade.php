@@ -55,6 +55,14 @@
                     @enderror
                 </div>
 
+                <div class="mb-3 mt-3">
+                    <label for="category">Book Cateogory:</label>
+                    <input type="text" class="form-control @error('category') is-invalid @enderror" id="category" placeholder="Enter category" name="category" value="{{ old('category') }}">
+                    @error('category')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 <button type="submit" class="btn btn-primary">Add Book</button>
             </form>
         </div>

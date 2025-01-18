@@ -40,10 +40,11 @@ class BookController extends Controller
     public function addBooks(Request $request)
 {
     $validated = $request->validate([
-        'book_name' => 'required|max:30|string',
+        'book_name' => 'required|max:50|string',
         'description' => ['required', 'string', new Maxlength],
         'author' => 'required|string|max:25',
         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'category' => 'required | max:50| string'
     ]);
 
     
@@ -56,6 +57,7 @@ class BookController extends Controller
     $book->author = $validated['author'];
     $book->description = $validated['description'];
     $book->image = $imageName; 
+    $book->category = $validated['category'];
     $book->save();
     if(!$book){
         DebugBar::error('failed to Insert');

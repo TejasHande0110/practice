@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::table('books', function (Blueprint $table) {
             //
             $table->string('image')->nullable();
+            $table->string('category')->default('Not Defined');
         });
     }
 

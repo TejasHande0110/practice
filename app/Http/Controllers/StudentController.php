@@ -6,13 +6,14 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Rules\FullName;
 class StudentController extends Controller
 {
     //
     public function add(Request $request){
 
            $validated = $request->validate([
-                 'name' => 'required | max:20 | alpha ',
+                 'name' => ['required', 'string', 'max:20' , new FullName],
                  'email' =>  'required | email | unique:students',
                  'pno' => 'required | size:10',
                  'department' => 'required | max:30',
@@ -44,7 +45,7 @@ class StudentController extends Controller
         session(['user_id' => $student->student_id]); 
         session(['user_name' => $student->name]);
         
-        return redirect()->route('home');
+        return redirect('/purchase');
     }else{
        return redirect()->back()->with('failure', 'Invalid Credentials');
     }    

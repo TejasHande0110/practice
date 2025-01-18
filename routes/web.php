@@ -63,3 +63,6 @@ Route::post('/rejectRequest/{transaction_id}', [AdminController::class, 'rejectR
 
 Route::post('/approveReturn/{transaction_id}', [AdminController::class, 'approveReturn'])->name('approveReturn');
 Route::post('/rejectReturn/{transaction_id}', [AdminController::class, 'rejectReturn'])->name('rejectReturn');
+Route::get('/reports', [AdminController::class, 'showOverview']);
+Route::get('/admin/detailedReport/{student_id}',[AdminController::class, 'generateReport'])->name('report.generate');
+

@@ -13,11 +13,9 @@ use Illuminate\Support\Facades\Auth;
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
+                
                 <li class="nav-item">
-                    <a class="nav-link" href="/home">Books</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/purchase">Purchase</a>
+                    <a class="nav-link" href="/purchase">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/history">History</a>

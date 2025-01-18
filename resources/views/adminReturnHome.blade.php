@@ -6,7 +6,7 @@
 
 <div class="container my-5">
     <div class="d-flex justify-content-center">
-        <h1 class="mb-4 mt-4 text-primary">Pending Renewal Requests</h1>
+        <h1 class="mb-4 mt-4 text-primary">Pending Return Requests</h1>
     </div>
 <div class="table-responsive">
 <table class="table table-striped table-hover table-bordered">

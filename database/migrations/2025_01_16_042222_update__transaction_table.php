@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::table('transactions', function (Blueprint $table) {
             //
             $table->enum('status', ['active', 'pending', 'rejected', 'return', 'received'])->default('active')->nullable(false);
+            $table->string('book_image')->nullable();
         });
     }
 

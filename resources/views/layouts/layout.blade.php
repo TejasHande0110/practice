@@ -33,6 +33,7 @@
     </div>
 
     <x-footer />
+    @yield('styles')
     @yield('scripts')
 
 </body>

@@ -40,7 +40,7 @@
                         <a class="nav-link" href="/addBook">Add Book</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/purchase">Reports</a>
+                        <a class="nav-link" href="/reports">Reports</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/allbuys">History</a>

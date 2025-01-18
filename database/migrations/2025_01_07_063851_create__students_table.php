@@ -30,6 +30,7 @@ return new class extends Migration
     {
         Schema::table('Students', function (Blueprint $table) {
             //
+            Schema::dropIfExists('students');
         });
     }
 };
