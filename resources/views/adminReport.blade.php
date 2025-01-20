@@ -4,7 +4,8 @@
 
 <div class="container my-5">
     <div class="card">
-        <div class="card-header bg-primary text-white">
+        
+        <div class="card-header bg-dark text-white">
             <h4>Student Overview</h4>
         </div>
         @foreach ($students as $student)
@@ -19,13 +20,16 @@
             <p><strong>Department:</strong> {{ $student->department }}</p>
             <p><strong>Latest Book Purchased:</strong> {{ $student->book_name ?? 'N/A' }}</p>
         </div>
-        <div class="card-footer">
-            <a href="{{ route('report.generate', $student->student_id) }}" class="btn btn-primary">
+        <div class="card-footer bg-dark text-white">
+            <a href="{{ route('report.generate', $student->student_id) }}" class="btn btn-light">
                 Generate Detailed Report
             </a>
+            
         </div>
-
+        <hr>
+        <br>
         @endforeach()
+       
     </div>
 </div>
 @endsection

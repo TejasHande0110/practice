@@ -4,7 +4,7 @@
 <div class="container my-5">
     <div class="report-container shadow p-4 bg-light rounded">
         <div class="report-header text-center mb-4">
-            <h1 class="display-4 text-primary">Library</h1>
+            <h1 class="display-4 text-dark">Library</h1>
             <h2 class="h3 text-secondary">Student Purchase History Report</h2>
         </div>
 
@@ -71,6 +71,9 @@
             <p>Library Contact Information</p>
             <p>Institution Address</p>
         </div>
+        <button onclick="window.print();" class="btn btn-dark">
+            Print
+          </button>
     </div>
 </div>
 

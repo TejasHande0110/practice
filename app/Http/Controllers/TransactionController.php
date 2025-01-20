@@ -26,7 +26,7 @@ class TransactionController extends Controller
             return redirect()->back()->with('failure','Book Already Purchased');
         }else{
             
-        $student = Student::select('name' , 'email')
+        $student = Student::select('name' , 'email', 'department')
         ->active($student_id)
         ->first();
 
@@ -39,7 +39,7 @@ class TransactionController extends Controller
 
         
         $date = Carbon::now();
-       
+        
         $transaction = new Transaction();
         $transaction->student_id = $student_id;
         $transaction->name = $student['name'];

@@ -40,7 +40,7 @@
                     </form>
                     <form action="{{ route('rejectRequest', $request->transaction_id) }}" method="POST" style="display:inline;">
                         @csrf
-                        <button type="submit" class="btn btna-danger">Reject</button>
+                        <button type="submit" class="btn btn-danger">Reject</button>
                     </form>
                 </td>
             </tr>

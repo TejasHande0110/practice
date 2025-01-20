@@ -5,10 +5,11 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 
@@ -20,6 +21,10 @@ Route::get('/SignUp' , function(){
 })->name('SignUp');
 
 Route::get('/login', function(){
+
+    if(Auth::check()){
+        return redirect('/purchase');
+    }
     return view('login');
 })->name('login');
 

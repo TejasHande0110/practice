@@ -134,6 +134,7 @@ class AdminController extends Controller
         ->orderByDesc('transactions.created_at')
         ->get();
         
+        
         return view('adminReport', [
             'students' => $students
         ]);
