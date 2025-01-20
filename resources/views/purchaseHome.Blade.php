@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <!-- Modal for displaying full description -->
+        
         <div class="modal fade" id="bookModal{{$book->book_id}}" tabindex="-1" aria-labelledby="bookModalLabel{{$book->book_id}}" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -93,7 +93,7 @@
 
     .card {
         width: 18rem;
-        height: 480px; /* Adjusted card height */
+        height: 480px;
         margin: 10px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
@@ -106,7 +106,7 @@
     }
 
     .book-img {
-        height: 250px; /* Adjusted image height */
+        height: 250px; 
         width: auto;
         object-fit: cover;
         margin: 0 auto;
